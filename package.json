@@ -1,10 +1,11 @@
 {
-  "name": "ts-demo",
-  "version": "1.0.0",
+  "name": "create-rookie",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "bin": "index.js",
   "scripts": {
-    "dev": "tsx watch --clear-screen=false src/app.ts"
+    "dev": "tsx watch --clear-screen=false src/app.ts",
+    "publish": "npm version patch && npm publish"
   },
   "keywords": [],
   "author": "",
