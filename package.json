@@ -1,22 +1,14 @@
 {
   "name": "create-rookie",
   "version": "0.0.2",
-  "description": "",
-  "bin": "index.js",
+  "description": "create-rookie",
+  "bin": {
+    "create-rookie": "src/index.js"
+  },
   "scripts": {
-    "dev": "tsx watch --clear-screen=false src/app.ts",
     "publish": "npm version patch && npm publish"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.14.2",
-    "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "lodash-es": "^4.17.21",
-    "tsx": "^4.15.6"
-  }
+  "license": "MIT"
 }
