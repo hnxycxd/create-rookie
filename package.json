@@ -2,13 +2,22 @@
   "name": "create-rookie",
   "version": "0.0.3",
   "description": "create-rookie",
+  "type": "module",
   "bin": {
-    "create-rookie": "src/index.js"
+    "create-rookie": "index.js"
   },
   "scripts": {
-    "publish": "npm version patch && npm publish"
+    "publish": "npm version patch && npm publish",
+    "build": "unbuild",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.6",
+  "devDependencies": {
+    "@types/prompts": "^2.4.9",
+    "prompts": "^2.4.2",
+    "unbuild": "^2.0.0"
+  }
 }
