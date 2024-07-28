@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import url from 'node:url'
+import { fileURLToPath } from 'node:url'
 
 const copyRecursion = (templateDir: string, destDir: string) => {
   const fileList = fs.readdirSync(templateDir, { withFileTypes: true })
@@ -32,7 +32,7 @@ const copy = (templatePath: string, workingPath: string) => {
   }
 }
 
-const dirname = path.dirname(url.fileURLToPath(import.meta.url))
-const templatePath = path.join(dirname, './template/node-ts')
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+const templatePath = path.join(dirname, '../src/template/node-ts')
 const workingPath = process.cwd()
 copy(templatePath, workingPath)
