@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ES2016",
+    "lib": ["ESNext"],
     "baseUrl": ".",
-    "target": "ES6",
-    "module": "CommonJS",
+    "module": "ESNext",
     "moduleResolution": "Node",
-    "esModuleInterop": true,
     "paths": {
       "@/*": ["src/*"]
-    }
-  }
+    },
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules", "dist", "build"]
 }

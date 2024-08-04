@@ -1,23 +1,25 @@
 {
   "name": "node-ts",
+  "type": "module",
   "version": "0.0.1",
   "description": "node-ts",
+  "author": "create-rookie",
+  "license": "ISC",
+  "keywords": [],
   "engines": {
     "node": ">=20.10.0"
   },
   "scripts": {
-    "dev": "tsx watch --clear-screen=false src/index.ts"
-  },
-  "keywords": [],
-  "author": "create-rookie",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.14.2",
-    "typescript": "^5.4.5",
-    "tsx": "^4.15.6"
+    "start": "tsx watch --clear-screen=false src/index.ts"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.24.1",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.14.2",
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5"
   }
 }

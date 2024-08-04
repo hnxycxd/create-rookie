@@ -1,8 +1,12 @@
 {
   "name": "create-rookie",
-  "version": "0.0.10",
-  "description": "create-rookie",
   "type": "module",
+  "version": "0.0.10",
+  "packageManager": "pnpm@9.0.6",
+  "description": "create-rookie",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
   "bin": {
     "create-rookie": "index.js"
   },
@@ -11,11 +15,8 @@
     "build": "unbuild",
     "clean": "rimraf dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "packageManager": "pnpm@9.0.6",
   "devDependencies": {
+    "@antfu/eslint-config": "^2.24.1",
     "@types/prompts": "^2.4.9",
     "prompts": "^2.4.2",
     "unbuild": "^2.0.0"

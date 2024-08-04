@@ -1,14 +1,14 @@
 {
   "name": "playground",
+  "type": "module",
   "version": "0.0.1",
   "description": "",
-  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "clean": "rimraf node-ts",
     "start": "node ../dist/index.mjs"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
