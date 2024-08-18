@@ -1,6 +1,50 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import prompts from 'prompts'
+import minimist from 'minimist'
+
+const argv = minimist(process.argv.slice(2), { alias: { t: 'template' }, string: ['_'] })
+let projectName = ''
+let templateName = ''
+
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const TEMPLATES = ['node-ts']
+
+const defaultTargetDir = 'rookie-project'
+
+const formatTargetDir = (targetDir: string | undefined) => targetDir?.trim().replace(/\/+$/g, '')
+
+const getPrompt = async () => {
+  const argvTargetDir = formatTargetDir(argv._[0])
+  const argvTemplate = argv.t || argv.template
+
+  projectName = argvTargetDir || defaultTargetDir
+
+  const response = await prompts([
+    {
+      type: argvTargetDir ? null : 'text',
+      name: 'name',
+      message: 'project name?',
+      initial: argvTargetDir,
+      onState: (state) => {
+        projectName = formatTargetDir(state.value) || defaultTargetDir
+      },
+    },
+    {
+      type: argvTemplate && TEMPLATES.includes(argvTemplate) ? null : 'select',
+      name: 'template',
+      message:
+        typeof argvTemplate === 'string' && !TEMPLATES.includes(argvTemplate)
+          ? `"${argvTemplate}" isn't a valid template. Please choose from below: `
+          : 'Select a template',
+      choices: TEMPLATES.map((t) => ({ title: t, value: t })),
+    },
+  ])
+
+  templateName = response.template || argvTemplate
+}
 
 const copyRecursion = (templateDir: string, destDir: string) => {
   const fileList = fs.readdirSync(templateDir, { withFileTypes: true })
@@ -18,10 +62,8 @@ const copyRecursion = (templateDir: string, destDir: string) => {
   })
 }
 
-const copy = (templatePath: string, workingPath: string) => {
+const copy = (templatePath: string, destFolderPath: string) => {
   try {
-    const destFolderPath = path.join(workingPath, path.basename(templatePath))
-
     fs.mkdirSync(destFolderPath, { recursive: true })
 
     copyRecursion(templatePath, destFolderPath)
@@ -32,7 +74,14 @@ const copy = (templatePath: string, workingPath: string) => {
   }
 }
 
-const dirname = path.dirname(fileURLToPath(import.meta.url))
-const templatePath = path.join(dirname, '../src/template/node-ts')
-const workingPath = process.cwd()
-copy(templatePath, workingPath)
+const run = async () => {
+  await getPrompt()
+
+  const templatePath = path.join(dirname, `../src/template/${templateName}`)
+
+  const destFolderPath = path.join(process.cwd(), projectName)
+
+  copy(templatePath, destFolderPath)
+}
+
+run()
