@@ -10,7 +10,7 @@ let templateName = ''
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const TEMPLATES = ['node-ts']
+const TEMPLATES = ['node-tsx', 'nodemon-ts-node']
 
 const defaultTargetDir = 'rookie-project'
 

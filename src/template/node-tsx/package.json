@@ -1,8 +1,9 @@
 {
-  "name": "node-ts",
+  "name": "node-tsx",
   "type": "module",
   "version": "0.0.1",
-  "description": "node-ts",
+  "packageManager": "pnpm@9.0.6",
+  "description": "node-tsx",
   "author": "create-rookie",
   "license": "ISC",
   "keywords": [],
